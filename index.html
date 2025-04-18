@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antimicrobial Cellulose-Based Food Packaging: A Research Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles - Very Light Blue Theme */
+        :root {
+            --bg-color: #f0f9ff; /* sky-50 */
+            --text-color-main: #0c4a6e; /* sky-800 */
+            --text-color-header: #082f49; /* sky-950 */
+            --text-color-accent: #075985; /* sky-700 */
+            --text-color-subtle: #0ea5e9; /* sky-500 */
+            --border-color-light: #e0f2fe; /* sky-100 */
+            --border-color-medium: #bae6fd; /* sky-200 */
+            --border-color-dark: #7dd3fc; /* sky-300 */
+            --accent-color: #38bdf8; /* sky-400 */
+            --highlight-bg: #e0f2fe; /* sky-100 */
+            --vis-bg-color: #f8fafc; /* slate-50 */
+            --vis-border-color: #cbd5e1; /* slate-300 */
+            --header-grad-from: #0ea5e9; /* sky-500 */
+            --header-grad-to: #0284c7; /* sky-600 */
+            --fiber-fill: #f5f1e6; /* Lighter beige */
+            --fiber-stroke: #e0d9c8; /* Darker beige */
+            --agent-dispersed: #0ea5e9; /* sky-500 */
+            --agent-grafted: #ef4444; /* red-500 */
+            --coating-layer-fill: #38bdf8; /* sky-400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-color-main);
+            background-color: var(--bg-color);
+        }
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            opacity: 0; animation: fadeIn 0.8s ease-out forwards;
+        }
+        /* Interactive elements */
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color-accent); }
+        input[type="range"], input[type="text"], select, button { border: 1px solid var(--border-color-medium); border-radius: 0.375rem; background-color: white; }
+        input[type="range"], input[type="text"], select { width: 100%; padding: 0.5rem; }
+        input[type="range"] { cursor: pointer; accent-color: var(--accent-color); padding: 0; } /* Remove padding for range */
+        input[type="checkbox"] { margin-right: 0.5rem; accent-color: var(--accent-color); }
+        button { padding: 0.5rem 1rem; cursor: pointer; transition: background-color 0.2s ease; font-weight: 500; }
+        button:hover { filter: brightness(95%); }
+        .output-box { background-color: var(--highlight-bg); border: 1px solid var(--border-color-medium); padding: 0.75rem; border-radius: 0.375rem; margin-top: 0.5rem; text-align: left; font-weight: 500; min-height: 60px; /* Increased height */ font-size: 0.85rem; }
+        .interactive-container { background-color: #ffffff; border: 1px solid var(--border-color-light); padding: 1.5rem; border-radius: 0.5rem; margin-top: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .visualization-box { min-height: 250px; background-color: var(--vis-bg-color); border: 1px dashed var(--vis-border-color); border-radius: 0.375rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; margin-top: 1rem; text-align: center; position: relative; overflow: hidden; transition: background-color 0.3s ease; }
+        .visualization-box svg { max-width: 100%; height: auto; }
+
+        /* Table styling */
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
+        th, td { border: 1px solid var(--border-color-medium); padding: 0.5rem; text-align: left; }
+        th { background-color: var(--highlight-bg); font-weight: 600; color: var(--text-color-accent); }
+        tbody tr:nth-child(odd) { background-color: #f8fafc; } /* slate-50 */
+        tbody tr:hover { background-color: #e0f2fe; } /* sky-100 */
+
+        /* General styling */
+        h1, h2, h3 { color: var(--text-color-header); }
+        h1 { font-size: 2.5rem; }
+        h2 { border-bottom: 2px solid var(--border-color-dark); padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        p, li { color: var(--text-color-main); line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; }
+        strong { color: var(--text-color-accent); font-weight: 600; }
+        code { background-color: #e0f2fe; color: #075985; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; }
+        blockquote { border-left: 4px solid var(--accent-color); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-color-subtle); background-color: var(--highlight-bg); }
+        .section-bg-white { background-color: #ffffff; }
+        footer ul { list-style: none; padding-left: 0; }
+        footer li { margin-bottom: 0.75rem; font-size: 0.8rem; line-height: 1.4; }
+        footer a { color: var(--accent-color); text-decoration: none; word-break: break-all; }
+        footer a:hover { text-decoration: underline; }
+        .instructional-text { font-size: 0.875rem; color: var(--text-color-subtle); margin-top: 0.5rem; }
+        sup { font-size: 0.65em; vertical-align: super; padding-left: 2px; color: var(--accent-color); }
+
+        /* Specific styles for interactive elements */
+        #coatingVis, #activePackagingVis { display: flex; justify-content: center; align-items: center; width: 100%; height: 250px; /* Fixed height */ background-color: #f0f9ff; /* Light blue bg for contrast */ border: 1px solid var(--border-color-medium); border-radius: 0.375rem; }
+        .cellulose-fiber { fill: var(--fiber-fill); stroke: var(--fiber-stroke); stroke-width: 0.5; opacity: 0.7; }
+        .antimicrobial-agent-dispersed { fill: var(--agent-dispersed); opacity: 0.8; }
+        .antimicrobial-agent-grafted { fill: var(--agent-grafted); stroke: #b91c1c; stroke-width: 0.3; }
+        .coating-layer { fill: var(--coating-layer-fill); }
+        .spray-droplet { fill: var(--coating-layer-fill); opacity: 0.6; }
+        .released-agent { fill: var(--text-color-subtle); opacity: 0.6; }
+        .microbe { fill: #fbbf24; /* amber-400 */ stroke: #d97706; /* amber-600 */ stroke-width: 0.5; }
+        .killed-microbe { fill: #a1a1aa; /* zinc-400 */ }
+        .food-item { fill: #fca5a5; /* red-300 */ stroke: #ef4444; /* red-500 */ }
+        .packaging-layer { fill: none; stroke: var(--text-color-main); stroke-width: 2; stroke-dasharray: 5,5; }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-5">
+            <h1 class="text-3xl font-bold">Antimicrobial Cellulose-Based Food Packaging</h1>
+            <p class="text-xl font-semibold mt-1">Advances Strategies and Selection</p>
+            <p class="text-xs mt-1">Based on the review by R. Marquez et al., *Advances in Colloid and Interface Science*, **2025**, *341*, 103472</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+
+        <section id="intro" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">1. Introduction: The Need for Advanced Bio-Based Packaging</h2>
+            <p>The global imperative to reduce plastic waste necessitates rigorous investigation into sustainable food packaging alternatives<sup class="text-sky-500">[1, 2]</sup>. Cellulose-based materials—paper, paperboard, and nanocellulose structures—present compelling options due to their inherent renewability and biodegradability<sup class="text-sky-500">[5-7]</sup>. However, a fundamental limitation lies in their often inferior barrier properties (e.g., against water vapor, oxygen) and lack of intrinsic microbial resistance compared to conventional synthetic polymers<sup class="text-sky-500">[3, 10, 11]</sup>.</p>
+            <p>Microbial contamination leading to food spoilage and foodborne illnesses, primarily caused by bacteria (e.g., *Salmonella*, *Listeria*, *E. coli*), yeasts, and molds, represents a persistent challenge to public health and economic stability<sup class="text-sky-500">[12-18]</sup>. Consequently, the development of <strong class="text-sky-600">active packaging</strong> systems, achieved by functionalizing cellulosic substrates with antimicrobial agents, constitutes a critical frontier in materials science and food technology<sup class="text-sky-500">[19–21]</sup>.</p>
+            <blockquote class="my-4">
+              Integrating antimicrobial functionality into sustainable cellulose-based packaging addresses fundamental challenges in food preservation and safety. This approach aims to supplant single-use plastics while concurrently enhancing product shelf-life through controlled surface interactions.
+            </blockquote>
+            <p>This overview synthesizes key findings from a comprehensive literature analysis<sup class="text-sky-500">[Marquez et al., 2025]</sup>, focusing on the fundamental strategies, materials, mechanisms, and selection criteria pertinent to designing advanced antimicrobial surfaces on cellulose-based food packaging. Critical challenges concerning efficacy, controlled release kinetics, processing compatibility, economic viability, sensory impact, and regulatory safety are examined from a fundamental perspective<sup class="text-sky-500">[24-32, 55, 56, 59, 61-66]</sup>.</p>
+        </section>
+
+        <section id="pathogens" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">2. Common Foodborne Pathogens Targeted</h2>
+            <p>Antimicrobial packaging strategies must be designed considering the specific microorganisms responsible for food spoilage and illness. Understanding the fundamental structural and physiological differences between microbial groups is paramount:</p>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li><strong>Gram-Positive Bacteria:</strong> (e.g., *Staphylococcus aureus*, *Listeria monocytogenes*, *Bacillus subtilis*). Characterized by a thick peptidoglycan cell wall external to the cytoplasmic membrane. This wall contains anionic polymers like teichoic and lipoteichoic acids, which present key targets for cationic antimicrobial agents<sup class="text-sky-500">[96]</sup>.</li>
+                <li><strong>Gram-Negative Bacteria:</strong> (e.g., *Escherichia coli*, *Salmonella* spp., *Pseudomonas aeruginosa*). Possess a more complex cell envelope structure: a thin peptidoglycan layer situated within the periplasmic space, enclosed by an outer membrane. This outer membrane, containing lipopolysaccharides (LPS) with negatively charged phosphate groups, presents a significant barrier to many antimicrobial compounds but also offers specific binding sites<sup class="text-sky-500">[170]</sup>.</li>
+                <li><strong>Fungi (Molds & Yeasts):</strong> (e.g., *Aspergillus niger*, *Penicillium expansum*, *Candida albicans*). Eukaryotic organisms with cell walls primarily composed of chitin and glucans, distinct from bacterial peptidoglycan. Their cytoplasmic membranes contain ergosterol instead of cholesterol. These differences necessitate distinct antifungal strategies<sup class="text-sky-500">[88-90]</sup>.</li>
+                <li><strong>Other Microbial Groups:</strong> Including general mesophilic and psychrophilic bacteria relevant to diverse food storage conditions (e.g., refrigeration), requiring broad-spectrum or specifically adapted antimicrobial approaches<sup class="text-sky-500">[174, 175]</sup>.</li>
+            </ul>
+            <p>A fundamental understanding of the target microorganism's cell envelope architecture and surface chemistry is crucial for the rational selection and design of effective antimicrobial agents and delivery mechanisms.</p>
+        </section>
+
+        <section id="agents-mechanisms" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">3. Antimicrobial Agents and Their Mechanisms</h2>
+            <p>A diverse array of agents can be incorporated into or onto cellulosic substrates to impart antimicrobial activity. Understanding their fundamental mechanisms of action is key:</p>
+            <ul class="list-disc list-inside space-y-2 pl-4">
+                 <li><strong class="text-sky-600">Chitosan:</strong> A cationic polysaccharide derived from chitin. At pH values below its pKa (~6.5), its primary amine groups (-NH₂) become protonated (-NH₃⁺). These cationic groups interact electrostatically with anionic components of microbial cell envelopes (e.g., teichoic acids in Gram+, LPS in Gram-), disrupting membrane integrity, increasing permeability, and causing leakage of intracellular contents<sup class="text-sky-500">[45, 79, 80, 125, 126]</sup>.</li>
+                <li><strong class="text-sky-600">Metal/Metal Oxide Nanoparticles (NPs):</strong>
+                    <ul class="list-circle list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li><code>AgNPs</code>: Exert multifaceted effects including: 1) Release of Ag⁺ ions which disrupt thiol groups in proteins/enzymes and interfere with DNA replication. 2) Generation of Reactive Oxygen Species (ROS) causing oxidative stress. 3) Direct physical disruption of membranes<sup class="text-sky-500">[81, 82, 129]</sup>. Broad spectrum activity.</li>
+                        <li><code>ZnONPs</code>: Primarily act via: 1) Generation of ROS (especially under UV). 2) Release of Zn²⁺ ions interfering with metabolic processes. 3) Physical membrane interaction leading to increased permeability<sup class="text-sky-500">[83, 84, 127]</sup>. Broad spectrum, photocatalytic potential.</li>
+                        <li><code>CuONPs</code>: Similar mechanisms involving Cu²⁺ ion release, ROS generation, and membrane damage<sup class="text-sky-500">[128]</sup>. Effective against bacteria and fungi.</li>
+                        <li><code>TiO₂NPs</code>: Primarily photocatalytic; upon UV irradiation, generate highly reactive ROS (·OH, O₂⁻) that non-selectively oxidize organic matter, including microbial components<sup class="text-sky-500">[75]</sup>.</li>
+                    </ul>
+                </li>
+                 <li><strong class="text-sky-600">Essential Oils (EOs) & Extracts:</strong> Complex mixtures of volatile secondary metabolites. Key components include:
+                    <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-xs">
+                        <li><em>Phenolics (e.g., carvacrol, thymol):</em> Lipophilic compounds that partition into microbial membranes, disrupting lipid packing, increasing fluidity and permeability, dissipating proton motive force, and inhibiting membrane-bound enzymes<sup class="text-sky-500">[51, 132, 133]</sup>.</li>
+                        <li><em>Terpenes/Terpenoids (e.g., limonene, pinene, linalool):</em> Also interact with membranes, affecting fluidity and integrity. Some can induce oxidative stress<sup class="text-sky-500">[144]</sup>.</li>
+                        <li><em>Aldehydes (e.g., cinnamaldehyde):</em> Can react with proteins and inhibit enzymes<sup class="text-sky-500">[148-151]</sup>.</li>
+                    </ul>
+                    Examples: Oregano, Thyme, Cinnamon, Zataria, Grape Seed Extract (GSE), Tea extracts<sup class="text-sky-500">[9, 39, 40, 48-50, 114, 119]</sup>. Activity depends heavily on composition.
+                </li>
+                 <li><strong class="text-sky-600">Antimicrobial Peptides (AMPs):</strong> Often cationic and amphipathic. Mechanisms include electrostatic binding to anionic membranes followed by insertion, leading to pore formation (e.g., toroidal, barrel-stave models) or membrane disruption via detergent-like 'carpet' mechanism, causing leakage<sup class="text-sky-500">[120]</sup>. Example: Nisin, Defensins, synthetic derivatives (e.g., 1018K6).</li>
+                 <li><strong class="text-sky-600">Other Agents:</strong> Including cell-free supernatants from probiotic bacteria (postbiotics)<sup class="text-sky-500">[118]</sup>, enzymes (e.g., lysozyme hydrolyzing peptidoglycan), synthetic biocides (e.g., chlorhexidine, triclosan - regulatory/safety concerns limit food use)<sup class="text-sky-500">[14, 27, 116]</sup>, and glucosinolate derivatives (hydrolyze to isothiocyanates)<sup class="text-sky-500">[152, 153]</sup>.</li>
+            </ul>
+
+             <div class="interactive-container mt-6">
+                <h3 class="text-xl font-semibold mb-3 text-center text-sky-700">Antimicrobial Mechanism Explorer</h3>
+                <p class="text-center instructional-text mb-4">Select an antimicrobial agent type to visualize its primary mechanism(s) of action against a representative microbial cell (conceptual).</p>
+                <div class="flex justify-center space-x-2 mb-4 flex-wrap gap-2">
+                     <button onclick="showMechanism_v2('chitosan')" class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-medium py-2 px-3 rounded">Chitosan</button>
+                     <button onclick="showMechanism_v2('metalnp')" class="bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium py-2 px-3 rounded">Metal NP (Ag/ZnO)</button>
+                     <button onclick="showMechanism_v2('eo_phenolic')" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium py-2 px-3 rounded">EO (Phenolic)</button>
+                     <button onclick="showMechanism_v2('eo_terpene')" class="bg-lime-500 hover:bg-lime-600 text-white text-sm font-medium py-2 px-3 rounded">EO (Terpene)</button>
+                     <button onclick="showMechanism_v2('peptide')" class="bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium py-2 px-3 rounded">Peptide</button>
+                </div>
+                <div id="mechanismVis_v2" class="visualization-box min-h-[300px] p-4 text-sm">
+                    Select an agent type above.
+                </div>
+            </div>
+        </section>
+
+        <section id="substrates-methods" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">4. Cellulose Substrates and Application Methods</h2>
+            <p>The versatility of cellulose allows its use in various forms as substrates for antimicrobial functionalization:</p>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                 <li><strong>Substrates:</strong> Common forms include conventional paper and paperboard (varying basis weights, e.g., flexible packaging paper 35-70 g/m²), specialty papers (e.g., tissue), regenerated cellulose films, bacterial cellulose (BC) membranes (highly pure, nanofibrillar network), and composites incorporating nanocellulose (CNF/CNC) or cellulose derivatives within other biopolymer matrices (e.g., starch, PLA)<sup class="text-sky-500">[Table 1 in Marquez et al., 2025]</sup>. Substrate porosity, surface chemistry (hydroxyl groups), and structure influence agent interaction and performance.</li>
+                <li><strong>Application Methods:</strong> The method chosen dictates agent distribution, adhesion, potential for release, and process scalability:
+                    <ul class="list-circle list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li><code>Coating:</code> Applying a liquid formulation (solution, dispersion, emulsion) containing the agent onto the pre-formed substrate surface. Techniques include bar coating, spray coating, dip coating, curtain coating. Allows for surface-specific functionality<sup class="text-sky-500">[104, 116, 119]</sup>.</li>
+                        <li><code>Incorporation/Blending:</code> Adding the agent directly into the cellulose pulp slurry before sheet formation (papermaking wet-end addition) or blending it into a polymer melt/solution used for subsequent film extrusion or coating<sup class="text-sky-500">[106]</sup>. Results in bulk distribution.</li>
+                        <li><code>Grafting:</code> Covalently attaching the antimicrobial agent (or a linker molecule followed by the agent) to the cellulose backbone (typically via hydroxyl groups). Creates durable, non-leaching surfaces but can be chemically complex<sup class="text-sky-500">[99, 115, 120, 123]</sup>.</li>
+                        <li><code>Adsorption/Electrostatic Assembly:</code> Utilizing physical adsorption or electrostatic interactions between charged agents (e.g., cationic chitosan, functionalized NPs) and potentially charged/modified cellulose surfaces (e.g., oxidized CNF)<sup class="text-sky-500">[105, 110]</sup>. Layer-by-Layer (LbL) assembly builds multilayer films via alternating deposition of oppositely charged species.</li>
+                        <li><code>Encapsulation/Controlled Release Systems:</code> Encapsulating the agent (especially volatile EOs or sensitive peptides) within protective carriers (e.g., cyclodextrins, liposomes, micro/nanocapsules, porous particles like halloysite nanotubes) before incorporation. This improves agent stability, reduces sensory impact, and enables controlled release kinetics triggered by environmental factors (moisture, pH, enzymes)<sup class="text-sky-500">[9, 103, 106, 121, 122, 161]</sup>.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>The interplay between substrate properties (porosity, surface energy, reactivity) and the chosen application method fundamentally governs agent loading efficiency, spatial distribution, adhesion strength, release profile, and ultimate antimicrobial efficacy.</p>
+        </section>
+
+        <section id="coating-app" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">4.1 Interactive App: Antimicrobial Surface Coating</h2>
+            <p class="instructional-text mb-4">Explore simplified concepts of applying antimicrobial agents to a porous cellulose substrate using different methods. Observe how method and concentration influence agent distribution and surface coverage (conceptual).</p>
+            <div class="interactive-container">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label for="coatingMethod_v2">Coating Method:</label>
+                        <select id="coatingMethod_v2" onchange="updateCoatingVisual_v2()">
+                            <option value="dip">Dip Coating</option>
+                            <option value="spray">Spray Coating</option>
+                            <option value="grafting">Grafting</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="coatingAgent_v2">Antimicrobial Agent Type:</label>
+                        <select id="coatingAgent_v2" onchange="updateCoatingVisual_v2()">
+                            <option value="solution">Polymer/Solution (e.g., Chitosan)</option>
+                            <option value="dispersion">NP Dispersion (e.g., AgNPs)</option>
+                            <option value="molecule">Reactive Molecule (for Grafting)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="coatingConcentration_v2">Concentration / Grafting Density:</label>
+                        <input type="range" id="coatingConcentration_v2" min="1" max="5" value="3" step="1" oninput="updateCoatingVisual_v2()">
+                    </div>
+                </div>
+                <div id="coatingVis_v2" class="visualization-box">
+                    <svg id="coatingSvg_v2" width="400" height="250" viewBox="0 0 400 250"></svg>
+                </div>
+                <div id="coatingDescription_v2" class="output-box mt-4 text-sm">Select parameters to see description.</div>
+            </div>
+        </section>
+
+        <section id="active-packaging-app" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">4.2 Interactive App: Active Packaging Principles</h2>
+            <p class="instructional-text mb-4">Visualize conceptual modes of action in active antimicrobial packaging. Observe how agents might interact with microbes over time (simplified).</p>
+            <div class="interactive-container">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label for="packagingMode">Mode of Action:</label>
+                        <select id="packagingMode" onchange="updateActivePackagingVisual()">
+                            <option value="release">Agent Release (e.g., EO Vapor)</option>
+                            <option value="contact">Contact Killing (Immobilized)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="simulationTime">Simulation Time (Conceptual):</label>
+                        <input type="range" id="simulationTime" min="0" max="10" value="0" step="1" oninput="updateActivePackagingVisual()">
+                    </div>
+                     <div>
+                        <label for="initialMicrobes">Initial Microbial Load:</label>
+                        <input type="range" id="initialMicrobes" min="5" max="20" value="10" step="1" oninput="updateActivePackagingVisual()">
+                    </div>
+                </div>
+                <div id="activePackagingVis" class="visualization-box">
+                     <svg id="activePackagingSvg" width="300" height="200" viewBox="0 0 300 200"></svg>
+                </div>
+                <div id="activePackagingDescription" class="output-box mt-4 text-sm">Adjust parameters to simulate.</div>
+            </div>
+        </section>
+
+        <section id="selection-framework" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">5. Interactive Selection Framework</h2>
+            <p class="mb-1 instructional-text">This interactive tool facilitates exploration of potential antimicrobial agent/substrate combinations based on reported efficacy against specific microorganisms, compiled from the supplementary information of the source review paper<sup class="text-sky-500">[Marquez et al., 2025, SI]</sup>.</p>
+            <p class="mb-4 text-xs text-gray-500">Note: This database aggregates data from diverse studies employing varied methodologies and reporting metrics (LRF: Log Reduction Factor; ZOI: Zone of Inhibition, mm). Direct quantitative comparison between entries requires extreme caution due to inherent variability. '-' indicates data not reported or not applicable.</p>
+            <div class="interactive-container">
+                <h3 class="text-xl font-semibold mb-3 text-center text-sky-700">Antimicrobial Packaging Selector</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label for="selectMicroorganism">Target Microorganism:</label>
+                        <select id="selectMicroorganism">
+                            <option value="all">All Reported</option>
+                            <option value="Staphylococcus aureus">Staphylococcus aureus (Gram+)</option>
+                            <option value="Listeria monocytogenes">Listeria monocytogenes (Gram+)</option>
+                            <option value="Bacillus subtilis">Bacillus subtilis (Gram+)</option>
+                            <option value="Bacillus cereus">Bacillus cereus (Gram+)</option>
+                            <option value="Escherichia coli">Escherichia coli (Gram-)</option>
+                            <option value="Salmonella typhimurium">Salmonella typhimurium (Gram-)</option>
+                            <option value="Pseudomonas aeruginosa">Pseudomonas aeruginosa (Gram-)</option>
+                            <option value="Klebsiella pneumoniae">Klebsiella pneumoniae (Gram-)</option>
+                            <option value="Candida albicans">Candida albicans (Yeast)</option>
+                            <option value="Aspergillus niger">Aspergillus niger (Mold)</option>
+                            <option value="Alternaria alternata">Alternaria alternata (Mold)</option>
+                            <option value="Botrytis cinerea">Botrytis cinerea (Mold)</option>
+                            <option value="Penicillium expansum">Penicillium expansum (Mold)</option>
+                            <option value="Mesophilic">Mesophilic (General)</option>
+                            <option value="Psychrophilic">Psychrophilic (General)</option>
+                            <option value="Enterobacteria">Enterobacteria (General)</option>
+                            <option value="Molds/Yeasts">Molds & Yeasts (General)</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="selectSubstrate">Substrate Type:</label>
+                        <select id="selectSubstrate">
+                            <option value="all">All Cellulose-Based</option>
+                            <option value="paper">Paper/Handsheet</option>
+                            <option value="board">Board/Cardboard/Carton</option>
+                            <option value="bc">Bacterial Cellulose (BC/BNC)</option>
+                            <option value="film">Film (Cellulose/Polymer Blend)</option>
+                             <option value="fiber">Fiber/Pulp</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="selectAgent">Agent Type (Optional Filter):</label>
+                         <select id="selectAgent">
+                            <option value="all">All Agents</option>
+                            <option value="Chitosan">Chitosan</option>
+                            <option value="Metal">Metal NP (Ag, ZnO, CuO, TiO2)</option>
+                            <option value="EO">Essential Oil / Component</option>
+                            <option value="Natural Extract">Natural Extract (GSE, Tea)</option>
+                            <option value="Peptide">Peptide</option>
+                            <option value="Other">Other (CHX, Postbiotic, etc.)</option>
+                        </select>
+                    </div>
+                </div>
+                 <div class="mb-4">
+                      <label for="filterText">Filter Results by Keyword:</label>
+                      <input type="text" id="filterText" placeholder="e.g., AgNP, Kraft, coating, BCD..." class="text-sm">
+                 </div>
+
+                <div class="overflow-x-auto">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Substrate (gsm)</th>
+                                <th>Agent</th>
+                                <th>Description/Method</th>
+                                <th>Conc.</th>
+                                <th>LRF (%)</th>
+                                <th>ZOI (mm)</th>
+                                <th>Ref.<sup class="text-sky-500">[SI]</sup></th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody">
+                            <tr><td colspan="7" class="text-center p-4">Select criteria to view results...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <p id="resultsCount" class="text-xs text-gray-500 mt-2 text-right"></p>
+            </div>
+        </section>
+
+        <section id="characterization-eval" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">6. Characterization and Evaluation</h2>
+            <p>Rigorous evaluation of antimicrobial packaging requires a multi-faceted approach, assessing both fundamental material properties and functional efficacy:</p>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li><strong>Material & Surface Characterization:</strong> Essential techniques include:
+                    <ul class="list-circle list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li>Spectroscopy (FTIR, Raman): To confirm chemical functionalization, agent incorporation, and interactions between components<sup class="text-sky-500">[99, 101]</sup>.</li>
+                        <li>Microscopy (SEM, TEM, AFM): To visualize surface morphology, coating uniformity, agent distribution (e.g., NPs), surface topography, and interactions at the nanoscale<sup class="text-sky-500">[100, 104, 105]</sup>.</li>
+                        <li>X-ray Techniques (XRD, XPS): To identify crystalline phases (e.g., NPs) and determine surface elemental composition and chemical states<sup class="text-sky-500">[54, 105]</sup>.</li>
+                        <li>Thermal Analysis (TGA, DSC): To assess thermal stability and phase transitions, crucial for processing and storage<sup class="text-sky-500">[101, 103]</sup>.</li>
+                        <li>Surface Energy/Wettability: Contact angle measurements to understand surface hydrophilicity/hydrophobicity, impacting interactions with food and microbes.</li>
+                    </ul>
+                </li>
+                <li><strong>Antimicrobial Efficacy Testing:</strong> Standardized methods are crucial, but results must be interpreted cautiously:
+                    <ul class="list-circle list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li><code>Zone of Inhibition (ZOI):</code> Agar diffusion test measuring the clear zone around the material where microbial growth is inhibited. Primarily indicates the effect of *diffusible* agents. Results depend heavily on agar properties and agent diffusion rate<sup class="text-sky-500">[Tables S1-S11]</sup>.</li>
+                        <li><code>Contact Killing Assays (e.g., ISO 22196, JIS Z 2801):</code> Quantifies the reduction in microbial population (Log Reduction Factor, LRF, or % reduction) after direct contact with the material surface compared to an inert control. Measures the efficacy of both leachable and non-leachable surface-bound agents<sup class="text-sky-500">[Tables S1-S11]</sup>.</li>
+                        <li><code>Liquid Culture Inhibition:</code> Assessing the impact of the material or its leachates on microbial growth in liquid broth (e.g., measuring OD₆₀₀).</li>
+                        <li><code>Food Challenge Tests:</code> The most relevant evaluation, assessing performance in direct contact with specific food products under realistic storage conditions (temperature, humidity). Measures impact on shelf-life and target pathogen reduction on the food itself<sup class="text-sky-500">[Tables S7, S10, S11]</sup>.</li>
+                    </ul>
+                </li>
+                 <li><strong>Packaging Performance Properties:</strong> Functionality beyond antimicrobial activity is critical:
+                    <ul class="list-circle list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li>Barrier Properties: Water Vapor Transmission Rate (WVTR) and Oxygen Transmission Rate (OTR) are fundamental for protecting most foods.</li>
+                        <li>Mechanical Properties: Tensile strength, elongation, puncture resistance, fold endurance relevant to package integrity.</li>
+                        <li>Processability: Compatibility with industrial processes like printing, sealing (heat sealability), and converting.</li>
+                        <li>Sensory Impact: Ensuring the packaging does not impart undesirable odors or flavors to the food<sup class="text-sky-500">[55, 56]</sup>.</li>
+                        <li>Migration Testing: Quantifying the transfer of packaging components (agents, additives, NPs) into food simulants or actual food, crucial for regulatory compliance and safety assessment<sup class="text-sky-500">[59, 61-66]</sup>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="challenges" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white dynamic-content">
+            <h2 class="text-2xl font-bold">7. Challenges, Perspectives, and Patents</h2>
+            <p>Despite significant scientific progress, the translation of antimicrobial cellulose-based packaging from laboratory to widespread industrial application faces fundamental challenges:</p>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li><strong class="text-sky-600">Barrier Performance Deficiencies:</strong> Cellulose's inherent hydrophilicity necessitates often complex and costly modifications (e.g., dense coatings, multilayer structures, chemical treatments) to achieve the gas and moisture barrier levels required for many food products, often competing with conventional plastics<sup class="text-sky-500">[1, 29, 30]</sup>. Integrating antimicrobial function without compromising barrier properties remains a key hurdle.</li>
+                <li><strong class="text-sky-600">Economic Viability:</strong> The cost associated with advanced antimicrobial agents (e.g., purified natural extracts, specific NPs, peptides), functionalization processes (e.g., grafting, LbL, nanocellulose production), and necessary barrier enhancements often exceeds that of traditional packaging materials, hindering market adoption<sup class="text-sky-500">[Conclusions in Marquez et al., 2025]</sup>.</li>
+                <li><strong class="text-sky-600">Scalability and Industrial Processability:</strong> Laboratory-scale functionalization techniques must be adapted for high-throughput, continuous industrial processes (e.g., roll-to-roll coating, compatibility with existing papermaking or converting lines). Ensuring performance consistency at scale is non-trivial<sup class="text-sky-500">[Conclusions in Marquez et al., 2025]</sup>.</li>
+                <li><strong class="text-sky-600">Controlled Release and Long-Term Efficacy:</strong> Designing systems that release antimicrobial agents at the required rate and maintain activity throughout the desired product shelf-life, under variable environmental conditions (temperature, RH), demands sophisticated formulation engineering (e.g., robust encapsulation, stimuli-responsive release)<sup class="text-sky-500">[25-27]</sup>. Preventing premature depletion or inactivation is critical.</li>
+                <li><strong class="text-sky-600">Food Quality and Sensory Impact:</strong> Antimicrobial agents, particularly volatile EOs, must not adversely alter the organoleptic properties (taste, aroma) of the packaged food. Potential interactions between the agent and food components (e.g., fats, proteins) can also reduce efficacy<sup class="text-sky-500">[55, 56]</sup>.</li>
+                <li><strong class="text-sky-600">Safety and Regulatory Approval:</strong> Ensuring the toxicological safety of all packaging components, particularly migrating substances like NPs or residual chemicals, is paramount. Navigating the complex regulatory landscape (e.g., FDA, EFSA requirements for food contact materials) requires extensive testing and documentation, especially for novel materials<sup class="text-sky-500">[59, 61-66]</sup>.</li>
+            </ul>
+             <p>The patent landscape indicates significant activity, particularly concerning metal NPs and certain natural compounds, yet underscores the ongoing difficulty in developing solutions that are simultaneously cost-effective, highly functional (antimicrobial + barrier), scalable, and unequivocally safe for widespread food packaging use<sup class="text-sky-500">[Table 5 in Marquez et al., 2025]</sup>.</p>
+             <blockquote class="my-4">
+               Future progress demands a holistic, systems-level approach. Research must rigorously integrate antimicrobial mechanism design with materials science for barrier enhancement, process engineering for scalability, economic analysis for viability, and thorough safety assessment to realize the full potential of sustainable, active cellulose-based food packaging. Addressing these interconnected challenges from a fundamental standpoint is essential.
+             </blockquote>
+        </section>
+
+        <footer class="mt-16 pt-8 border-t border-sky-200 text-sm text-sky-700">
+            <h3 class="text-lg font-semibold mb-3 text-sky-800">References</h3>
+            <p class="text-xs mb-4">(References primarily based on Marquez et al., *Adv. Colloid Interface Sci.* **2025**, *341*, 103472. Links provided where available in source. SI refers to Supplementary Information tables in the source.)</p>
+             <ul class="space-y-2 text-xs columns-1 md:columns-2">
+                 <li>[1] Tardy BL, et al. *Nat Sustain* **2023**;6:360–7. <a href="https://doi.org/10.1038/s41893-022-01012-5" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[2] Bras J, Saini S. In: *Cellulose-Reinforced Nanofibre Composites*. Woodhead Publishing; **2017**, p. 175–213. <a href="https://doi.org/10.1016/B978-0-08-100957-4.00008-5" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[3] Groh KJ, et al. *Sci Total Environ* **2019**;651:3253–68. <a href="https://doi.org/10.1016/j.scitotenv.2018.10.015" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[5] Zambrano F, et al. *Resour Conserv Recycl* **2021**;175:105854. <a href="https://doi.org/10.1016/j.resconrec.2021.105854" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[6] Shen L, et al. *Biofuels Bioprod Biorefining* **2012**;6:625–39. <a href="https://doi.org/10.1002/bbb.1368" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[7] Firoozi Nejad B, et al. *Clean Environ Syst* **2021**;3:100058. <a href="https://doi.org/10.1016/j.cesys.2021.100058" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[9] Aguado RJ, et al. *Int J Biol Macromol* **2024**;263:130319. <a href="https://doi.org/10.1016/j.ijbiomac.2024.130319" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[10] Taufik D, et al. *Sci Total Environ* **2020**;705:135820. <a href="https://doi.org/10.1016/j.scitotenv.2019.135820" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[11] Siroli L, et al. *Front Microbiol* **2017**;8:2606. <a href="https://doi.org/10.3389/fmicb.2017.02606" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[12] CDC. *MMWR* **2024**. <a href="https://www.cdc.gov/mmwr/volumes/73/wr/pdfs/mm7326a1-H.pdf" target="_blank" class="text-sky-600 hover:text-sky-800">[Link]</a></li>
+                 <li>[14] Martínez-Abad A, et al. *Int J Food Microbiol* **2013**;162:89–94. <a href="https://doi.org/10.1016/j.ijfoodmicro.2012.12.024" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[18] Tyagi P, et al. *Langmuir* **2019**;35:104–12. <a href="https://doi.org/10.1021/acs.langmuir.8b02655" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[19] De Azeredo HMC. *Trends Food Sci Technol* **2013**;30:56–69. <a href="https://doi.org/10.1016/j.tifs.2012.11.006" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[21] Al-Tayyar NA, et al. *Food Chem* **2020**;310:125915. <a href="https://doi.org/10.1016/j.foodchem.2019.125915" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[22] Ahari H, et al. *Adv Colloid Interface Sci* **2022**;310:102806. <a href="https://doi.org/10.1016/j.cis.2022.102806" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[24] Tripathy A, et al. *Adv Colloid Interface Sci* **2017**;248:85–104. <a href="https://doi.org/10.1016/j.cis.2017.07.030" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[25] Aloui H, Khwaldia K. *Compr Rev Food Sci Food Saf* **2016**;15:1080–103. <a href="https://doi.org/10.1111/1541-4337.12226" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[27] Vasile C, Baican M. *Molecules* **2021**;26:1263. <a href="https://doi.org/10.3390/molecules26051263" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[29] Yu Z, et al. *Emergent Mater* **2020**;3:919–36. <a href="https://doi.org/10.1007/s42247-020-00147-5" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[30] Khwaldia K, et al. *Compr Rev Food Sci Food Saf* **2010**;9:82–91. <a href="https://doi.org/10.1111/j.1541-4337.2009.00095.x" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[39] Sharma S, et al. *Food Chem* **2021**;343:128403. <a href="https://doi.org/10.1016/j.foodchem.2020.128403" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[40] Ju J, et al. *Trends Food Sci Technol* **2019**;92:22-32. <a href="https://doi.org/10.1016/j.tifs.2019.08.005" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[45] Mageshwaran V, et al. In: *Chitosan Nanocomposites*. Springer; **2023**, p. 161–79. <a href="https://doi.org/10.1007/978-981-19-9646-7_7" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[48] Paster N, et al. *Lett Appl Microbiol* **1990**;11:33-7. <a href="https://doi.org/10.1111/j.1472-765X.1990.tb00130.x" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[49] Zhou Y, et al. *Int J Biol Macromol* **2018**;112:7-13. <a href="https://doi.org/10.1016/j.ijbiomac.2018.01.102" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[50] Wani AR, et al. *Microb Pathog* **2021**;152:104620. <a href="https://doi.org/10.1016/j.micpath.2020.104620" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[51] Ju J, et al. In: *Cinnamon*. Springer; **2023**, p. 85-105. <a href="https://doi.org/10.1007/978-3-031-33505-1_8" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[54] Aouay M, et al. *Cellulose* **2024**;31:5687–706. <a href="https://doi.org/10.1007/s10570-024-05918-5" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[55] Zhao Y, et al. *J Agric Food Chem* **2023**;71:11806–33. <a href="https://doi.org/10.1021/acs.jafc.3c02608" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[56] O'sullivan M. *A handbook for sensory and consumer-driven new product development*. Woodhead Publishing; **2016**.</li>
+                 <li>[59] Lacourt C, et al. *Compr Rev Food Sci Food Saf* **2024**;23:e70059. <a href="https://doi.org/10.1111/1541-4337.70059" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[61] Huang J-Y, et al. *Trends Food Sci Technol* **2015**;45:187–99. <a href="https://doi.org/10.1016/j.tifs.2015.07.002" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[62] Khan MS, et al. In: *Nanobiotechnology for Plant Protection*. Elsevier; **2022**, p. 627–47. <a href="https://doi.org/10.1016/B978-0-12-824508-8.00016-2" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[63] Mei L, Wang Q. *Annu Rev Food Sci Technol* **2020**;11:339–64. <a href="https://doi.org/10.1146/annurev-food-032519-051804" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[65] EFSA Scientific Committee, et al. *EFSA Journal* **2021**;19:e06768. <a href="https://doi.org/10.2903/j.efsa.2021.6768" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[66] Haase A, et al. *EFSA Supporting Publications* **2024**;21:9008E. <a href="https://doi.org/10.2903/sp.efsa.2024.EN-9008" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[75] Alizadeh Sani M, et al. *Adv Colloid Interface Sci* **2022**;300:102593. <a href="https://doi.org/10.1016/j.cis.2021.102593" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[79] Tyagi P, et al. *Langmuir* **2019**;35:104–12. <a href="https://doi.org/10.1021/acs.langmuir.8b02655" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[80] Qi L, et al. *Carbohydr Res* **2004**;339:2693–700. <a href="https://doi.org/10.1016/j.carres.2004.09.007" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[81] Azizi-Lalabadi M, et al. *Adv Colloid Interface Sci* **2021**;293:102440. <a href="https://doi.org/10.1016/j.cis.2021.102440" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[82] Gong X, et al. *Adv Colloid Interface Sci* **2024**;323:103053. <a href="https://doi.org/10.1016/j.cis.2023.103053" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[83] Tan H, et al. *Nanosci Nanotechnol Lett* **2017**;9:241-6. <a href="https://doi.org/10.1166/nnl.2017.2309" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[84] Jaisai M, et al. *Beilstein J Nanotechnol* **2012**;3:684–91. <a href="https://doi.org/10.3762/bjnano.3.78" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[88] Pitt JI, Hocking AD. *Fungi and food spoilage*. Springer; **2009**.</li>
+                 <li>[89] Snyder AB, Worobo RW. *J Food Prot* **2018**;81:1035–40. <a href="https://doi.org/10.4315/0362-028X.JFP-18-031" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[90] Dean R, et al. *Mol Plant Pathol* **2012**;13:414–30. <a href="https://doi.org/10.1111/j.1364-3703.2011.00783.x" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[96] Gross M, et al. *Infect Immun* **2001**;69:3423–6. <a href="https://doi.org/10.1128/IAI.69.5.3423-3426.2001" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[99] Kamel S. *Carbohydr Polym* **2012**;90:1538–42. <a href="https://doi.org/10.1016/j.carbpol.2012.07.027" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[100] Cabañas-Romero LV, et al. *Biomacromolecules* **2020**;21:1568–77. <a href="https://doi.org/10.1021/acs.biomac.0c00127" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[101] Kamel S. *Carbohydr Polym* **2012**;90:1538–42. <a href="https://doi.org/10.1016/j.carbpol.2012.07.027" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[102] Amin KM, et al. *Part Part Syst Charact* **2020**. <a href="https://doi.org/10.1002/ppsc.202000006" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[103] Buendía-Moreno L, et al. *Food Control* **2020**;107:106763. <a href="https://doi.org/10.1016/j.foodcont.2019.106763" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[104] Panariello L, et al. *Eur Polym J* **2019**;113:328–39. <a href="https://doi.org/10.1016/j.eurpolymj.2019.02.004" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[105] Martins NCT, et al. *Cellulose* **2012**;19:1425–36. <a href="https://doi.org/10.1007/s10570-012-9713-5" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[106] Buendía-Moreno L, et al. *Food Bioproc Tech* **2019**;12:1548–58. <a href="https://doi.org/10.1007/s11947-019-02311-0" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[107] Lloret E, et al. *LWT - Food Sci Technol* **2012**;49:333–8. <a href="https://doi.org/10.1016/j.lwt.2012.01.042" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[108] Jung J, et al. *Int J Biol Macromol* **2018**;112:530–6. <a href="https://doi.org/10.1016/j.ijbiomac.2018.01.155" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[109] Nassar MA, Youssef AM. *Carbohydr Polym* **2012**;89:269–74. <a href="https://doi.org/10.1016/j.carbpol.2012.03.007" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[110] Jaisai M, et al. *Beilstein J Nanotechnol* **2012**;3:684–91. <a href="https://doi.org/10.3762/bjnano.3.78" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[111] Baruah S, et al. *Sci Technol Adv Mater* **2010**;11:055002. <a href="https://doi.org/10.1088/1468-6996/11/5/055002" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[112] Yoosefi Booshehri A, et al. *Chem Eng J* **2015**;262:999–1008. <a href="https://doi.org/10.1016/j.cej.2014.09.096" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[113] Almasi H, et al. *Carbohydr Polym* **2018**;186:273–81. <a href="https://doi.org/10.1016/j.carbpol.2018.01.067" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[114] Akrami F, et al. *LWT - Food Sci Technol* **2015**;60:929–33. <a href="https://doi.org/10.1016/j.lwt.2014.09.051" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[115] Lavoine N, et al. *Innov Food Sci Emerg Technol* **2014**;26:330–40. <a href="https://doi.org/10.1016/j.ifset.2014.06.006" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[116] Lavoine N, et al. *J Food Sci Technol* **2015**;52:5590–600. <a href="https://doi.org/10.1007/s13197-014-1675-1" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[117] Lavoine N, et al. *Colloids Surf B Biointerfaces* **2014**;121:196–205. <a href="https://doi.org/10.1016/j.colsurfb.2014.06.021" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[118] Shafipour Yordshahi A, et al. *Int J Food Microbiol* **2020**;321:108561. <a href="https://doi.org/10.1016/j.ijfoodmicro.2020.108561" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[119] Shankar S, Rhim J-W. *Carbohydr Polym* **2018**;196:92–101. <a href="https://doi.org/10.1016/j.carbpol.2018.04.128" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[120] Agrillo B, et al. *Int J Mol Sci* **2019**;20:601. <a href="https://doi.org/10.3390/ijms20030601" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[121] Šumiga B, et al. *Coatings* **2019**;9:470. <a href="https://doi.org/10.3390/coatings9080470" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[122] Jiang Y, et al. *Int J Biol Macromol* **2020**;148:1280–9. <a href="https://doi.org/10.1016/j.ijbiomac.2019.10.103" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[123] Huo J, et al. *Int J Biol Macromol* **2024**;268:131790. <a href="https://doi.org/10.1016/j.ijbiomac.2024.131790" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[124] Aguado RJ, et al. *Int J Biol Macromol* **2024**;279:135110. <a href="https://doi.org/10.1016/j.ijbiomac.2024.135110" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[125] Rabea EI, et al. *Biomacromolecules* **2003**;4:1457–65. <a href="https://doi.org/10.1021/bm034130m" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[126] Leceta I, et al. *J Food Eng* **2013**;116:889–99. <a href="https://doi.org/10.1016/j.jfoodeng.2013.01.022" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[127] Premanathan M, et al. *Nanomedicine* **2011**;7:184–92. <a href="https://doi.org/10.1016/j.nano.2010.10.001" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[128] Yoosefi Booshehri A, et al. *Chem Eng J* **2015**;262:999–1008. <a href="https://doi.org/10.1016/j.cej.2014.09.096" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[129] Carbone M, et al. *J King Saud Univ Sci* **2016**;28:273–9. <a href="https://doi.org/10.1016/j.jksus.2016.05.004" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[132] Nostro A, Papalia T. *Recent Pat Antiinfect Drug Discov* **2012**;7:28–35. <a href="https://doi.org/10.2174/157489112799829684" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[133] Galotto MJ, et al. In: *Antimicrobial Food Packaging*. Elsevier; **2016**, p. 450. <a href="https://doi.org/10.1016/B978-0-12-800723-5.00045-0" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[144] Yang X, et al. *Appl Microbiol Biotechnol* **2023**;107:6641–53. <a href="https://doi.org/10.1007/s00253-023-12737-4" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[148] Nostro A, Papalia T. *Recent Pat Antiinfect Drug Discov* **2012**;7:28–35. <a href="https://doi.org/10.2174/157489112799829684" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[149] Pacyga K, et al. *Int J Mol Sci* **2024**;25:2100. <a href="https://doi.org/10.3390/ijms25042100" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[150] Marchese A, et al. *Crit Rev Microbiol* **2017**;43:668–89. <a href="https://doi.org/10.1080/1040841X.2017.1295225" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[151] Ju J, et al. In: *Cinnamon*. Springer; **2023**, p. 85-105. <a href="https://doi.org/10.1007/978-3-031-33505-1_8" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[152] Abdel-Massih RM, et al. *Front Microbiol* **2023**;14.</li>
+                 <li>[153] Abdel-Massih RM, et al. *Front Microbiol* **2023**;14.</li>
+                 <li>[158] Wang QZ, et al. *Carbohydr Polym* **2006**;65:194–201. <a href="https://doi.org/10.1016/j.carbpol.2006.01.001" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[161] Marques CS, et al. *Food Res Int* **2019**;119:499–509. <a href="https://doi.org/10.1016/j.foodres.2019.01.016" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[164] El-Samahy MA, et al. *Carbohydr Polym* **2017**;168:212–9. <a href="https://doi.org/10.1016/j.carbpol.2017.03.041" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[170] Paracini N, et al. *Adv Colloid Interface Sci* **2022**;301:102603. <a href="https://doi.org/10.1016/j.cis.2022.102603" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[173] Bordenave N, et al. *Biomacromolecules* **2010**;11:88–96. <a href="https://doi.org/10.1021/bm9009528" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[174] García-Descalzo L, et al. *Front Microbiol* **2022**;13.</li>
+                 <li>[175] Witter LD. *J Dairy Sci* **1961**;44:983–1015. <a href="https://doi.org/10.3168/jds.S0022-0302(61)89851-2" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[177] Echegoyen Y, Nerín C. *Food Chem* **2015**;170:30–6. <a href="https://doi.org/10.1016/j.foodchem.2014.08.032" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[178] Shibata N, et al. *Biochem J* **2007**;404:365–72. <a href="https://doi.org/10.1042/BJ20070081" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+                 <li>[Marquez et al., 2025] Marquez R, Aguado RJ, Barrios N, Arellano H, Tolosa L, Delgado-Aguilar M. *Adv Colloid Interface Sci* **2025**;341:103472. <a href="https://doi.org/10.1016/j.cis.2025.103472" target="_blank" class="text-sky-600 hover:text-sky-800">[DOI]</a></li>
+            </ul>
+            <p class="mt-6 text-center text-xs text-sky-700">Antimicrobial Packaging Course | Educational Resource | Version 3.0</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- Data from Supplementary Information (SI) ---
+        // Sample data remains for demonstration.
+        const si_data = [
+             { pathogen: "Staphylococcus aureus", substrate_gsm: "50-60", substrate_type: "BC paper sheet", agent_type: "Chitosan", agent_detail: "Chitosan (methyl glycol derivative)", description: "Chitosan coating by immersion", concentration: "625 µg/cm²", lrf: "100%", zoi: "-", ref: "[S1]", substrate_cat: "bc" },
+             { pathogen: "Staphylococcus aureus", substrate_gsm: "-", substrate_type: "Bagasse paper sheet (acrylamide grafting)", agent_type: "Metal", agent_detail: "AgNPs", description: "AgNP stabilized into PAM grafted layer", concentration: "-", lrf: "-", zoi: "13", ref: "[S1]", substrate_cat: "paper" },
+             { pathogen: "Staphylococcus aureus", substrate_gsm: "-", substrate_type: "Filter paper disc", agent_type: "Metal", agent_detail: "ZnONPs", description: "PVA/PLUR solution + ZnO on filter paper", concentration: "25 wt.%", lrf: "-", zoi: "35", ref: "[S1]", substrate_cat: "paper" },
+             { pathogen: "Staphylococcus aureus", substrate_gsm: "70", substrate_type: "Bleached paper", agent_type: "EO", agent_detail: "Zataria EO", description: "Mixed with US FDA emulsion of paraffin formula", concentration: "6 wt.% EO in paraffin", lrf: "25%", zoi: "-", ref: "[S1]", substrate_cat: "paper" },
+             { pathogen: "Bacillus subtilis", substrate_gsm: "-", substrate_type: "Filter paper disc", agent_type: "Metal", agent_detail: "ZnONPs", description: "PVA/PLUR solution + ZnO on filter paper", concentration: "20 wt.%", lrf: "-", zoi: "17", ref: "[S2]", substrate_cat: "paper" },
+             { pathogen: "Bacillus subtilis", substrate_gsm: "42", substrate_type: "Bleached hardwood paper", agent_type: "EO", agent_detail: "Carvacrol", description: "Carvacrol impregnation on CA/BCD grafted paper", concentration: "18.7 wt.%", lrf: "-", zoi: "80", ref: "[S2]", substrate_cat: "paper" },
+             { pathogen: "Listeria monocytogenes", substrate_gsm: "40", substrate_type: "Wrapping food paper", agent_type: "Natural Extract", agent_detail: "GSE Grape seed extract", description: "Blended biopolymer coating: glycerol + GSE + alginate + carrageenan + CMC", concentration: "0.03 w/v%", lrf: "100%", zoi: "-", ref: "[S4]", substrate_cat: "paper" },
+             { pathogen: "Listeria monocytogenes", substrate_gsm: "176", substrate_type: "Testliner", agent_type: "EO", agent_detail: "Thyme oil (TEO)", description: "Paper coated with TOCNF-stabilized emulsions containing TEO and olive fruit extract.", concentration: "TOCNFs: 0.6 wt%", lrf: ">99%", zoi: "-", ref: "[S4]", substrate_cat: "board" },
+             { pathogen: "Escherichia coli", substrate_gsm: "15", substrate_type: "Tissue paper sheets", agent_type: "Chitosan", agent_detail: "Chitosan + plasma treatment", description: "Ch-CNC sprayed coating + plasma treatment", concentration: "-", lrf: "99%", zoi: "23.4", ref: "[S5]", substrate_cat: "paper" },
+             { pathogen: "Escherichia coli", substrate_gsm: "-", substrate_type: "Whatman filter paper", agent_type: "Metal", agent_detail: "CuONLs", description: "Paper piece soaked in CuNitrate and then in NaOH solution", concentration: "1.1 mg/cm² (25 wt.%)", lrf: "100%", zoi: "-", ref: "[S5]", substrate_cat: "paper" },
+             { pathogen: "Escherichia coli", substrate_gsm: "106", substrate_type: "White bleached kraft paper", agent_type: "Metal", agent_detail: "ZnONPs (organosilane surface coated)", description: "Mixed with PLA solution", concentration: "3 wt.% NP in PLA", lrf: "40.4%", zoi: "-", ref: "[S5]", substrate_cat: "paper" },
+             { pathogen: "Pseudomonas aeruginosa", substrate_gsm: "50-60", substrate_type: "BC paper sheet", agent_type: "Chitosan", agent_detail: "Chitosan (methyl glycol derivative)", description: "Chitosan coating by immersion", concentration: "625 µg/cm²", lrf: "100%", zoi: "-", ref: "[S5]", substrate_cat: "bc" },
+             { pathogen: "Salmonella typhimurium", substrate_gsm: "320", substrate_type: "Paper", agent_type: "Chitosan", agent_detail: "Chitosan + hydrophobized Chitosan DPCT", description: "Ch + palmitic-chain-grafted-Ch solution (penetration into paper)", concentration: "-", lrf: "99%", zoi: "-", ref: "[S6]", substrate_cat: "paper" },
+             { pathogen: "Candida albicans", substrate_gsm: "-", substrate_type: "Filter paper disc", agent_type: "Metal", agent_detail: "ZnONPs", description: "PVA/PLUR solution + ZnO on filter paper", concentration: "25 wt.%", lrf: "-", zoi: "40", ref: "[S8]", substrate_cat: "paper" },
+             { pathogen: "Aspergillus niger", substrate_gsm: "35", substrate_type: "Kraft paper sheet", agent_type: "Metal", agent_detail: "ZnO nanorods + halogen light", description: "Photocatalytic paper with ZnO nanorods attached", concentration: "-", lrf: "-", zoi: "26.0", ref: "[S8]", substrate_cat: "paper" },
+             { pathogen: "Botrytis cinerea", substrate_gsm: "-", substrate_type: "Filter paper disc", agent_type: "EO", agent_detail: "Cinnamon EO", description: "EO emulsionated coating (Pickering emulsion stabilized by Zein-Citrus Pectin)", concentration: "0.16 µL/mL", lrf: "100%", zoi: "30.5", ref: "[S8]", substrate_cat: "paper" },
+             { pathogen: "Mesophilic", substrate_gsm: "275", substrate_type: "Virgin fibre board", agent_type: "Chitin", agent_detail: "Chitin", description: "Chitosan + chitin 0:100 film casting solution", concentration: "2.5 wt.% chitin", lrf: "9%", ref: "[S7]", substrate_cat: "board" },
+             { pathogen: "Psychrophilic", substrate_gsm: "-", substrate_type: "Corrugated cardboard boxes", agent_type: "EO", agent_detail: "Carvacrol:Oregano:Cinnamon", description: "Encapsulated in HNT complexes. EO-HNT-lacquer spraying", concentration: "-", lrf: ">23.5% static", zoi: "-", ref: "[S7]", substrate_cat: "board" },
+             { pathogen: "Molds/Yeasts", substrate_gsm: "325", substrate_type: "Recycled board", agent_type: "Chitosan", agent_detail: "Chitosan-Chitin", description: "Chitosan + chitin 80:20 film casting solution (dry 110°C)", concentration: "2+0.5 wt.%", lrf: ">50%", ref: "[S9]", substrate_cat: "board" }
+        ];
+
+        // --- Intersection Observer for Fade-in Effect ---
+        const sections_v5 = document.querySelectorAll('.dynamic-content');
+        const observerOptions_v5 = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observerCallback_v5 = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-section');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const observer_v5 = new IntersectionObserver(observerCallback_v5, observerOptions_v5);
+        sections_v5.forEach(section => { observer_v5.observe(section); });
+
+        // --- Mechanism Explorer ---
+        const mechanismVisDiv_v2 = document.getElementById('mechanismVis_v2');
+        function showMechanism_v2(type) {
+            let title = '';
+            let description = '';
+            let svgContent = `
+                <svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="gradCell" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" style="stop-color:rgb(251, 191, 36);stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:rgb(217, 119, 6);stop-opacity:1" />
+                        </radialGradient>
+                         <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                           <polygon points="0 0, 10 3.5, 0 7" fill="#0ea5e9" />
+                         </marker>
+                    </defs>
+                    <ellipse cx="140" cy="100" rx="100" ry="60" fill="none" stroke="#fb7185" stroke-width="4" stroke-dasharray="5,3" opacity="0.7" id="outerMembrane" visibility="hidden"/>
+                    <ellipse cx="140" cy="100" rx="90" ry="55" fill="none" stroke="#a3a3a3" stroke-width="6" id="peptidoglycan"/>
+                    <ellipse cx="140" cy="100" rx="80" ry="50" fill="none" stroke="#0ea5e9" stroke-width="3" id="cytoMembrane"/>
+                    <ellipse cx="140" cy="100" rx="78" ry="48" fill="url(#gradCell)" id="cytoplasm"/>
+                    <path d="M 120 90 q 10 -10 20 0 t 20 0 q 10 10 0 20 t -20 0 q -10 -10 -20 0 t -20 0" fill="none" stroke="#a78bfa" stroke-width="1.5" id="dna"/>
+                    <g id="mechanismElements"></g>
+                    <text x="10" y="190" font-family="Inter, sans-serif" font-size="10px" fill="#555">Conceptual Microbial Cell</text>
+                </svg>`;
+
+            mechanismVisDiv_v2.innerHTML = svgContent;
+            const mechanismElementsGroup = mechanismVisDiv_v2.querySelector('#mechanismElements');
+            const outerMembrane = mechanismVisDiv_v2.querySelector('#outerMembrane');
+            const cytoMembrane = mechanismVisDiv_v2.querySelector('#cytoMembrane');
+
+            switch(type) {
+                 case 'chitosan':
+                    title = 'Chitosan Mechanism';
+                    description = `
+                        <p class="text-xs text-left px-4">
+                        1. <strong>Electrostatic Binding:</strong> Cationic chitosan (+NH₃) binds strongly to anionic components (LPS, teichoic acids, phospholipids) on the microbial surface. <br/>
+                        2. <strong>Membrane Permeabilization:</strong> This binding disrupts the structural integrity of the cell envelope (outer membrane in Gram-, cell wall/membrane in Gram+).<br/>
+                        3. <strong>Leakage:</strong> Increased permeability leads to leakage of essential intracellular contents (ions, metabolites, proteins), causing cell death. <br/>
+                        4. <strong>Other Effects:</strong> May also chelate metal ions or interfere with nutrient uptake.
+                        </p>`;
+                    outerMembrane.setAttribute('visibility', 'visible');
+                    mechanismElementsGroup.innerHTML = `
+                        <circle cx="40" cy="40" r="5" fill="#38bdf8" opacity="0.8"/> <text x="40" y="40" dy=".3em" text-anchor="middle" font-size="8px" fill="white">+</text>
+                        <circle cx="55" cy="150" r="5" fill="#38bdf8" opacity="0.8"/> <text x="55" y="150" dy=".3em" text-anchor="middle" font-size="8px" fill="white">+</text>
+                        <circle cx="220" cy="50" r="5" fill="#38bdf8" opacity="0.8"/> <text x="220" y="50" dy=".3em" text-anchor="middle" font-size="8px" fill="white">+</text>
+                        <line x1="45" y1="45" x2="80" y2="70" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                        <line x1="60" y1="145" x2="90" y2="120" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                        <path d="M 90 120 C 100 130, 110 135, 120 130 C 130 125, 140 130, 150 135" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2"/>
+                        <circle cx="130" cy="140" r="1.5" fill="#facc15"/> <circle cx="135" cy="145" r="1.5" fill="#facc15"/> <circle cx="140" cy="142" r="1.5" fill="#facc15"/>`;
+                    break;
+                case 'metalnp':
+                     title = 'Metal NP Mechanism (Ag/ZnO)';
+                     description = `
+                        <p class="text-xs text-left px-4">
+                        1. <strong>Ion Release:</strong> NPs release metal ions (Ag⁺, Zn²⁺) which are inherently toxic. <br/>
+                        2. <strong>ROS Generation:</strong> NPs and released ions catalyze the formation of Reactive Oxygen Species (ROS), causing oxidative damage to lipids, proteins, and DNA.<br/>
+                        3. <strong>Membrane Interaction:</strong> NPs can physically adhere to/penetrate membranes, disrupting integrity and transport.<br/>
+                        4. <strong>Intracellular Targets:</strong> Ions and ROS interfere with enzyme function (e.g., thiol binding by Ag⁺) and DNA replication. ZnO also shows photocatalytic ROS generation under UV.
+                        </p>`;
+                    mechanismElementsGroup.innerHTML = `
+                        <circle cx="50" cy="50" r="6" fill="#9ca3af"/> <text x="50" y="50" dy=".3em" text-anchor="middle" font-size="7px" fill="white">NP</text>
+                        <circle cx="230" cy="150" r="6" fill="#9ca3af"/> <text x="230" y="150" dy=".3em" text-anchor="middle" font-size="7px" fill="white">NP</text>
+                        <text x="65" y="55" font-size="10px" fill="#4b5563">Ag⁺/Zn²⁺</text> <line x1="56" y1="50" x2="65" y2="53" stroke="#71717a" stroke-width="1"/>
+                        <text x="200" y="160" font-size="10px" fill="#dc2626">ROS</text> <path d="M 224 150 q 5 -5 10 0 t 10 0" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,1"/>
+                        <ellipse cx="140" cy="100" rx="80" ry="50" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3" opacity="0.7"/>
+                         <path d="M 120 90 q 10 -10 20 0 t 20 0 q 10 10 0 20 t -20 0 q -10 -10 -20 0 t -20 0" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="1,2"/>`;
+                    break;
+                case 'eo_phenolic':
+                     title = 'EO Mechanism (Phenolic - e.g., Carvacrol)';
+                     description = `
+                        <p class="text-xs text-left px-4">
+                        1. <strong>Membrane Partitioning:</strong> Lipophilic phenolic compounds (e.g., carvacrol, thymol) insert into the lipid bilayer of the cytoplasmic membrane.<br/>
+                        2. <strong>Disruption of Structure:</strong> This disrupts lipid packing, increases membrane fluidity, and compromises its integrity.<br/>
+                        3. <strong>Increased Permeability:</strong> Leads to leakage of ions (H⁺, K⁺) and ATP, dissipating the proton motive force (PMF) essential for energy production.<br/>
+                        4. <strong>Enzyme Inhibition:</strong> Can also inhibit membrane-associated enzymes (e.g., ATPases).
+                        </p>`;
+                    cytoMembrane.setAttribute('stroke', '#10b981'); cytoMembrane.setAttribute('stroke-width', '4');
+                    mechanismElementsGroup.innerHTML = `
+                        <polygon points="40,80 45,70 55,70 60,80 55,90 45,90" fill="#10b981" opacity="0.8"/>
+                        <polygon points="220,120 225,110 235,110 240,120 235,130 225,130" fill="#10b981" opacity="0.8"/>
+                        <path d="M 100 60 C 110 55, 130 55, 140 60" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                         <path d="M 180 140 C 170 145, 150 145, 140 140" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                        <text x="160" y="70" font-size="10px" fill="#f59e0b">H⁺, K⁺</text> <line x1="150" y1="65" x2="160" y2="68" stroke="#f59e0b" stroke-width="1"/>
+                        <text x="110" y="135" font-size="10px" fill="#f59e0b">ATP</text> <line x1="130" y1="130" x2="120" y2="133" stroke="#f59e0b" stroke-width="1"/>`;
+                    break;
+                case 'eo_terpene':
+                     title = 'EO Mechanism (Terpene - e.g., Limonene)';
+                     description = `
+                        <p class="text-xs text-left px-4">
+                        1. <strong>Membrane Interaction:</strong> Less polar terpenes (e.g., limonene, pinene) also interact with membrane lipids, potentially altering fluidity and causing some destabilization.<br/>
+                        2. <strong>Oxidative Stress:</strong> Some terpenes can induce ROS production or participate in lipid peroxidation, contributing to membrane damage.<br/>
+                        3. <strong>Mechanisms Vary:</strong> The precise mechanisms are diverse and less universally defined than for phenolics; effects can be structure-dependent.
+                        </p>`;
+                    cytoMembrane.setAttribute('stroke', '#84cc16'); cytoMembrane.setAttribute('stroke-width', '4');
+                    mechanismElementsGroup.innerHTML = `
+                        <path d="M 50 110 C 60 100, 70 110, 60 120 Z" fill="#84cc16" opacity="0.8"/>
+                        <path d="M 210 70 C 220 60, 230 70, 220 80 Z" fill="#84cc16" opacity="0.8"/>
+                         <line x1="65" y1="115" x2="100" y2="110" stroke="#84cc16" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                        <text x="180" y="60" font-size="10px" fill="#dc2626">ROS?</text> <path d="M 215 70 q -5 -5 -10 0 t -10 0" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,1"/>`;
+                    break;
+                case 'peptide':
+                     title = 'Antimicrobial Peptide (AMP) Mechanism';
+                     description = `
+                        <p class="text-xs text-left px-4">
+                        1. <strong>Electrostatic Binding:</strong> Cationic AMPs bind to anionic microbial membranes.<br/>
+                        2. <strong>Membrane Insertion/Disruption:</strong> Depending on the peptide structure and concentration: <br/>
+                           &nbsp;&nbsp;- <em>Pore Formation:</em> Peptides aggregate and insert to form transmembrane pores (e.g., barrel-stave, toroidal models), causing rapid leakage.<br/>
+                           &nbsp;&nbsp;- <em>Carpet Mechanism:</em> Peptides accumulate parallel to the membrane surface, disrupting lipid packing like a detergent, leading to micellization and membrane dissolution.<br/>
+                        3. <strong>Leakage & Lysis:</strong> Both pathways lead to loss of membrane potential, leakage of cellular contents, and cell death.
+                        </p>`;
+                    cytoMembrane.setAttribute('stroke', '#a855f7'); cytoMembrane.setAttribute('stroke-width', '4');
+                    mechanismElementsGroup.innerHTML = `
+                        <rect x="30" y="60" width="5" height="15" fill="#a855f7" transform="rotate(-30 32.5 67.5)"/>
+                        <rect x="40" y="130" width="5" height="15" fill="#a855f7" transform="rotate(20 42.5 137.5)"/>
+                        <rect x="240" y="80" width="5" height="15" fill="#a855f7" transform="rotate(-10 242.5 87.5)"/>
+                        <ellipse cx="140" cy="100" rx="5" ry="15" fill="#f3e8ff" stroke="#a855f7" stroke-width="1"/>
+                        <line x1="140" y1="85" x2="140" y2="115" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,2"/>
+                         <circle cx="145" cy="75" r="1.5" fill="#facc15"/> <circle cx="135" cy="70" r="1.5" fill="#facc15"/>
+                         <circle cx="140" cy="125" r="1.5" fill="#facc15"/> <circle cx="150" cy="128" r="1.5" fill="#facc15"/>`;
+                    break;
+                default:
+                    title = 'Mechanism Explorer';
+                    description = '<p class="text-center">Select an agent type above to see its mechanism.</p>';
+                    mechanismElementsGroup.innerHTML = '';
+            }
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'mt-4 w-full';
+            infoDiv.innerHTML = `<h4 class="font-semibold text-center mb-2">${title}</h4>${description}`;
+            mechanismVisDiv_v2.appendChild(infoDiv);
+        }
+
+        // --- Selection Framework ---
+        const selectMicroorganism = document.getElementById('selectMicroorganism');
+        const selectSubstrate = document.getElementById('selectSubstrate');
+        const selectAgent = document.getElementById('selectAgent');
+        const filterText = document.getElementById('filterText');
+        const resultsBody = document.getElementById('resultsBody');
+        const resultsCount = document.getElementById('resultsCount');
+
+        function filterData() {
+            const pathogenFilter = selectMicroorganism.value;
+            const substrateFilter = selectSubstrate.value;
+            const agentFilter = selectAgent.value;
+            const textFilter = filterText.value.toLowerCase().trim();
+
+            const filtered = si_data.filter(item => {
+                const pathogenMatch = (pathogenFilter === 'all') || (item.pathogen && item.pathogen.includes(pathogenFilter));
+                let substrateMatch = (substrateFilter === 'all');
+                if (!substrateMatch && item.substrate_cat) {
+                   substrateMatch = item.substrate_cat.toLowerCase().includes(substrateFilter.toLowerCase());
+                } else if (!substrateMatch && item.substrate_type) {
+                    const typeLower = item.substrate_type.toLowerCase();
+                    if (substrateFilter === 'paper' && (typeLower.includes('paper') || typeLower.includes('handsheet'))) substrateMatch = true;
+                    else if (substrateFilter === 'board' && (typeLower.includes('board') || typeLower.includes('carton') || typeLower.includes('cardboard') || typeLower.includes('testliner'))) substrateMatch = true;
+                    else if (substrateFilter === 'bc' && (typeLower.includes('bc') || typeLower.includes('bnc') || typeLower.includes('bacterial cellulose'))) substrateMatch = true;
+                    else if (substrateFilter === 'film' && typeLower.includes('film')) substrateMatch = true;
+                    else if (substrateFilter === 'fiber' && (typeLower.includes('fiber') || typeLower.includes('pulp'))) substrateMatch = true;
+                }
+                let agentMatch = (agentFilter === 'all');
+                 if (!agentMatch && item.agent_type) {
+                    const agentTypeLower = item.agent_type.toLowerCase();
+                    const agentDetailLower = item.agent_detail ? item.agent_detail.toLowerCase() : '';
+                    if (agentFilter === 'Chitosan' && agentTypeLower.includes('chitosan')) agentMatch = true;
+                    else if (agentFilter === 'Metal' && (agentTypeLower.includes('metal') || agentDetailLower.includes('agnp') || agentDetailLower.includes('znonp') || agentDetailLower.includes('cuonp') || agentDetailLower.includes('tio'))) agentMatch = true;
+                    else if (agentFilter === 'EO' && (agentTypeLower.includes('eo') || agentTypeLower.includes('essential oil') || agentDetailLower.includes('carvacrol') || agentDetailLower.includes('thymol') || agentDetailLower.includes('cinnamon') || agentDetailLower.includes('oregano') || agentDetailLower.includes('zataria'))) agentMatch = true;
+                    else if (agentFilter === 'Natural Extract' && (agentTypeLower.includes('natural extract') || agentDetailLower.includes('gse') || agentDetailLower.includes('tea extract'))) agentMatch = true;
+                    else if (agentFilter === 'Peptide' && agentTypeLower.includes('peptide')) agentMatch = true;
+                    else if (agentFilter === 'Other' && !['chitosan', 'metal', 'eo', 'natural extract', 'peptide'].some(term => agentTypeLower.includes(term) || agentDetailLower.includes(term))) agentMatch = true;
+                 }
+                const textContent = `${item.substrate_type || ''} ${item.agent_detail || ''} ${item.description || ''} ${item.ref || ''}`.toLowerCase();
+                const textFilterMatch = (textFilter === '') || textContent.includes(textFilter);
+                return pathogenMatch && substrateMatch && agentMatch && textFilterMatch;
+            });
+            displayResults(filtered);
+        }
+
+        function displayResults(data) {
+            resultsBody.innerHTML = '';
+            if (data.length === 0) {
+                resultsBody.innerHTML = '<tr><td colspan="7" class="text-center p-4 text-gray-500">No matching results found for the selected criteria.</td></tr>';
+                resultsCount.textContent = '0 results';
+                return;
+            }
+            data.forEach(item => {
+                const row = resultsBody.insertRow();
+                row.innerHTML = `
+                    <td class="border border-sky-100 p-2">${item.substrate_gsm || '-'} (${item.substrate_type || 'N/A'})</td>
+                    <td class="border border-sky-100 p-2">${item.agent_detail || item.agent_type || 'N/A'}</td>
+                    <td class="border border-sky-100 p-2">${item.description || '-'}</td>
+                    <td class="border border-sky-100 p-2">${item.concentration || '-'}</td>
+                    <td class="border border-sky-100 p-2">${item.lrf || '-'}</td>
+                    <td class="border border-sky-100 p-2">${item.zoi || '-'}</td>
+                    <td class="border border-sky-100 p-2">${item.ref || '-'}</td>
+                `;
+            });
+            resultsCount.textContent = `${data.length} result(s) found`;
+        }
+
+        selectMicroorganism.addEventListener('change', filterData);
+        selectSubstrate.addEventListener('change', filterData);
+        selectAgent.addEventListener('change', filterData);
+        filterText.addEventListener('input', filterData);
+
+
+       // --- Coating Visualization App (REVISED v2) ---
+        const coatingSvg_v2 = document.getElementById('coatingSvg_v2');
+        const coatingDescription_v2 = document.getElementById('coatingDescription_v2');
+        const fiberCoords = []; // Store fiber coordinates for grafting
+
+        function drawFibers(svgElement, numFibers = 15) {
+            fiberCoords.length = 0; // Clear previous coordinates
+            const svgWidth = 400;
+            const svgHeight = 250;
+            const fiberGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+            for (let i = 0; i < numFibers; i++) {
+                const fiber = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+                const cx = Math.random() * svgWidth;
+                const cy = Math.random() * svgHeight;
+                const rx = 50 + Math.random() * 100;
+                const ry = 3 + Math.random() * 4;
+                const angle = Math.random() * 180;
+
+                fiber.setAttribute('cx', cx);
+                fiber.setAttribute('cy', cy);
+                fiber.setAttribute('rx', rx);
+                fiber.setAttribute('ry', ry);
+                fiber.setAttribute('class', 'cellulose-fiber');
+                fiber.setAttribute('transform', `rotate(${angle} ${cx} ${cy})`);
+                fiberGroup.appendChild(fiber);
+                // Store simplified representation for grafting
+                fiberCoords.push({ cx, cy, rx, ry, angle });
+            }
+            svgElement.appendChild(fiberGroup);
+        }
+
+        function updateCoatingVisual_v2() {
+            const method = document.getElementById('coatingMethod_v2').value;
+            const agentType = document.getElementById('coatingAgent_v2').value; // solution, dispersion, molecule
+            const concentration = parseInt(document.getElementById('coatingConcentration_v2').value); // 1 to 5
+
+            let descriptionText = '';
+            coatingSvg_v2.innerHTML = ''; // Clear previous SVG content
+
+            // Draw base fibrous substrate
+            drawFibers(coatingSvg_v2);
+
+            const svgWidth = 400;
+            const svgHeight = 250;
+            const agentGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            const coatingLayerGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+            // --- Visualization Logic ---
+            if (method === 'dip') {
+                // Conformal coating layer
+                const coatingRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                coatingRect.setAttribute('x', '0');
+                coatingRect.setAttribute('y', '0');
+                coatingRect.setAttribute('width', svgWidth);
+                coatingRect.setAttribute('height', svgHeight);
+                coatingRect.setAttribute('class', 'coating-layer');
+                coatingRect.style.opacity = 0.05 + concentration * 0.06; // Adjust opacity based on concentration
+                coatingLayerGroup.appendChild(coatingRect);
+
+                // Dispersed agents within the layer and some penetration
+                const numAgents = concentration * 30;
+                for (let i = 0; i < numAgents; i++) {
+                    const particle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    particle.setAttribute('cx', Math.random() * svgWidth);
+                    particle.setAttribute('cy', Math.random() * svgHeight);
+                    particle.setAttribute('r', agentType === 'dispersion' ? 2.5 : 1.5); // NPs slightly larger
+                    particle.setAttribute('class', 'antimicrobial-agent-dispersed');
+                    agentGroup.appendChild(particle);
+                }
+                descriptionText = `<strong>Dip Coating:</strong> Substrate immersed in ${agentType}. Leads to relatively conformal coverage of fibers and penetration into pores. Agent loading depends on solution/dispersion concentration (${concentration}/5) and substrate uptake. Good for uniform treatment.`;
+
+            } else if (method === 'spray') {
+                // Surface layer, potentially less uniform
+                const numDroplets = concentration * 25;
+                const sprayHeight = svgHeight * 0.6; // Spray covers roughly top 60%
+                 for (let i = 0; i < numDroplets; i++) {
+                    const droplet = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    const cx = Math.random() * svgWidth;
+                    const cy = Math.random() * sprayHeight;
+                    droplet.setAttribute('cx', cx);
+                    droplet.setAttribute('cy', cy);
+                    droplet.setAttribute('r', agentType === 'dispersion' ? 3 : 2); // NPs slightly larger
+                    droplet.setAttribute('class', 'spray-droplet');
+                    droplet.style.opacity = 0.2 + concentration * 0.1;
+                    agentGroup.appendChild(droplet); // Using agentGroup for droplets/particles
+                 }
+                  // Simulate some coalescence/layer formation at higher concentrations
+                  if (concentration > 3) {
+                       const surfaceLayer = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                       surfaceLayer.setAttribute('x', '0');
+                       surfaceLayer.setAttribute('y', '0');
+                       surfaceLayer.setAttribute('width', svgWidth);
+                       surfaceLayer.setAttribute('height', svgHeight * (0.1 + (concentration - 3) * 0.05)); // Thin layer on top
+                       surfaceLayer.setAttribute('class', 'coating-layer');
+                       surfaceLayer.style.opacity = 0.1 + concentration * 0.04;
+                       coatingLayerGroup.appendChild(surfaceLayer);
+                  }
+                descriptionText = `<strong>Spray Coating:</strong> ${agentType} applied as aerosol/mist. Primarily deposits on the top surface with limited penetration. Coverage uniformity depends on spray parameters. Concentration (${concentration}/5) affects layer density/thickness.`;
+
+            } else if (method === 'grafting') {
+                // Agents chemically bound to fiber surfaces
+                const graftsPerFiber = concentration * 2; // Density level
+                fiberCoords.forEach(fiber => {
+                    for (let i = 0; i < graftsPerFiber; i++) {
+                        const graft = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                        // Place graft on the perimeter of the ellipse
+                        const angleOffset = Math.random() * 2 * Math.PI;
+                        const x = fiber.cx + fiber.rx * Math.cos(angleOffset);
+                        const y = fiber.cy + fiber.ry * Math.sin(angleOffset);
+
+                        // Apply rotation
+                        const rotatedPoint = rotatePoint(x, y, fiber.cx, fiber.cy, fiber.angle);
+
+                        graft.setAttribute('cx', rotatedPoint.x);
+                        graft.setAttribute('cy', rotatedPoint.y);
+                        graft.setAttribute('r', 2);
+                        graft.setAttribute('class', 'antimicrobial-agent-grafted');
+                        agentGroup.appendChild(graft);
+                    }
+                });
+                 descriptionText = `<strong>Grafting:</strong> Reactive ${agentType} covalently bonded to cellulose hydroxyl groups on fiber surfaces. Creates a durable, non-leaching surface. Grafting density (${concentration}/5) depends on reaction efficiency and available sites.`;
+            }
+
+            // Append groups to SVG (order matters for visibility)
+            coatingSvg_v2.appendChild(coatingLayerGroup); // Layer below agents
+            coatingSvg_v2.appendChild(agentGroup);
+            coatingDescription_v2.innerHTML = descriptionText; // Use innerHTML to allow basic formatting
+        }
+
+        // Helper function for rotation in grafting
+        function rotatePoint(px, py, cx, cy, angle) {
+            const radians = (Math.PI / 180) * angle;
+            const cos = Math.cos(radians);
+            const sin = Math.sin(radians);
+            const nx = (cos * (px - cx)) + (sin * (py - cy)) + cx;
+            const ny = (cos * (py - cy)) - (sin * (px - cx)) + cy;
+            return { x: nx, y: ny };
+        }
+
+
+        // --- Active Packaging Visualization App ---
+        const activePackagingSvg = document.getElementById('activePackagingSvg');
+        const activePackagingDescription = document.getElementById('activePackagingDescription');
+
+        function updateActivePackagingVisual() {
+            const mode = document.getElementById('packagingMode').value;
+            const time = parseInt(document.getElementById('simulationTime').value);
+            const initialMicrobes = parseInt(document.getElementById('initialMicrobes').value);
+            let descriptionText = '';
+            activePackagingSvg.innerHTML = ''; // Clear SVG
+
+            const food = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+            food.setAttribute('cx', '150'); food.setAttribute('cy', '130');
+            food.setAttribute('rx', '60'); food.setAttribute('ry', '30');
+            food.setAttribute('class', 'food-item');
+            activePackagingSvg.appendChild(food);
+
+            const pkg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            pkg.setAttribute('x', '50'); pkg.setAttribute('y', '20');
+            pkg.setAttribute('width', '200'); pkg.setAttribute('height', '160');
+            pkg.setAttribute('rx', '10');
+            pkg.setAttribute('class', 'packaging-layer');
+            activePackagingSvg.appendChild(pkg);
+            activePackagingSvg.innerHTML += `<text x="55" y="35" font-size="10px" class="text-sky-800">Packaging</text>`;
+            activePackagingSvg.innerHTML += `<text x="140" y="135" font-size="10px" fill="white">Food</text>`;
+
+            let microbeCoords = [];
+            for (let i = 0; i < initialMicrobes; i++) {
+                const angle = Math.random() * Math.PI;
+                const x = 150 + 60 * Math.cos(angle);
+                const y = 130 - 30 * Math.sin(angle);
+                 microbeCoords.push({ x: x, y: y, alive: true });
+            }
+
+            let liveMicrobeCount = initialMicrobes;
+
+            if (mode === 'release') {
+                const releaseFactor = time / 10;
+                const numReleased = Math.floor(releaseFactor * 30);
+                for (let i = 0; i < numReleased; i++) {
+                    const agent = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    agent.setAttribute('cx', 60 + Math.random() * 180);
+                    agent.setAttribute('cy', 30 + Math.random() * 80);
+                    agent.setAttribute('r', 2);
+                    agent.setAttribute('class', 'released-agent');
+                    activePackagingSvg.appendChild(agent);
+                }
+                const killProbability = releaseFactor * 0.8;
+                microbeCoords.forEach(m => {
+                    if (m.alive && Math.random() < killProbability) {
+                        m.alive = false; liveMicrobeCount--;
+                    }
+                });
+                descriptionText = `<strong>Agent Release:</strong> Antimicrobial vapor (e.g., EO) released from packaging into headspace. Inhibits microbes on food surface over time. Live microbes: ${liveMicrobeCount}/${initialMicrobes}`;
+            } else if (mode === 'contact') {
+                 const killProbability = (time / 10) * 0.9;
+                 microbeCoords.forEach(m => {
+                    if (m.alive && Math.random() < killProbability) {
+                        m.alive = false; liveMicrobeCount--;
+                    }
+                 });
+                 pkg.setAttribute('stroke', '#ef4444');
+                 pkg.setAttribute('stroke-width', '3');
+                 descriptionText = `<strong>Contact Killing:</strong> Immobilized agent on packaging surface inhibits microbes upon direct contact. Efficacy increases with contact time. Live microbes: ${liveMicrobeCount}/${initialMicrobes}`;
+            }
+
+             microbeCoords.forEach(m => {
+                 const microbeEl = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                 microbeEl.setAttribute('cx', m.x); microbeEl.setAttribute('cy', m.y);
+                 microbeEl.setAttribute('r', 3);
+                 microbeEl.setAttribute('class', m.alive ? 'microbe' : 'killed-microbe');
+                 activePackagingSvg.appendChild(microbeEl);
+             });
+
+            activePackagingDescription.innerHTML = descriptionText; // Use innerHTML
+        }
+
+
+        // --- Initial calls on load ---
+        window.addEventListener('load', () => {
+            filterData();
+            showMechanism_v2('chitosan');
+            updateCoatingVisual_v2(); // Use revised function
+            updateActivePackagingVisual();
+        });
+
+    </script>
+
+</body>
+</html>
